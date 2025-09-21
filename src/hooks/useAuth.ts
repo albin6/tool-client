@@ -79,8 +79,12 @@ export const useAuthProvider = (): AuthContextType => {
 
         const response = await authApi.login(credentials);
 
-        if (response.success && response.data?.user && response.data?.token) {
-          setAuth(response.data.user, response.data.token);
+        if (
+          response.success &&
+          response.data?.user &&
+          response.data?.accessToken
+        ) {
+          setAuth(response.data.user, response.data.accessToken);
           if (response.data.refreshToken) {
             localStorage.setItem("refreshToken", response.data.refreshToken);
           }

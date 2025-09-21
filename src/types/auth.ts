@@ -1,11 +1,12 @@
+export type UserRole = "admin" | "user" | "manager";
+
 export interface User {
   id: string;
+  name: string;
   email: string;
-  firstName?: string;
-  lastName?: string;
-  avatar?: string;
-  createdAt: string;
-  updatedAt: string;
+  role: UserRole;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface LoginCredentials {
@@ -42,7 +43,7 @@ export interface AuthResponse {
   message: string;
   data?: {
     user?: User;
-    token?: string;
+    accessToken?: string;
     refreshToken?: string;
   };
 }
